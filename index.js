@@ -14,8 +14,12 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use('/api/v1',routing);
 
 
+app.get('/',(req,res)=>{
+    res.json({message:"welcome to node app"});
+})
+
 if(cluster.isMaster){
-    for(let i=0; i<os.cpus().length-3; i++){
+    for(let i=0; i<os.cpus().length-1; i++){
 
         cluster.fork();
     }
